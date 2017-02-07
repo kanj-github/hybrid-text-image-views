@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/icon_camera"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@android:drawable/ic_menu_camera"
+        android:layout_gravity="left|bottom"
+        android:baselineAlignBottom="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tool:visibility="visible"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="60dp"
+        tool:layout_height="200dp"/>
+
+    <com.kanj.apps.hybridtextimageviews.MaxHeightScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tool:visibility="gone"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="60dp" >
+        <include layout="@layout/edit_text_image_adapter_scroll_view"/>
+    </com.kanj.apps.hybridtextimageviews.MaxHeightScrollView>
+
+    <TextView
+        android:id="@+id/tv_send"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:textStyle="bold"
+        android:layout_gravity="right|bottom"
+        android:text="SEND" />
+</android.support.v7.widget.CardView>

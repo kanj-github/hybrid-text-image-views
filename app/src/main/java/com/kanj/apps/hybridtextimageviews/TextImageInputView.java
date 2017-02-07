@@ -1,7 +1,9 @@
 package com.kanj.apps.hybridtextimageviews;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
@@ -18,6 +20,9 @@ public class TextImageInputView extends CardView {
     private RecyclerView imagesListView;
     private TextView sendLabel;
     private ImageView cameraIcon;
+    private MaxHeightScrollView mMaxHeightScrollView;
+
+    private ItemsViewAdapter mAdapter;
 
     private TextImageInputListener mListener;
 
@@ -39,6 +44,8 @@ public class TextImageInputView extends CardView {
         sendLabel = (TextView) findViewById(R.id.tv_send);
         cameraIcon = (ImageView) findViewById(R.id.icon_camera);
 
+        mMaxHeightScrollView = (MaxHeightScrollView) findViewById(R.id.text_image_scroll_view);
+
         sendLabel.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +63,36 @@ public class TextImageInputView extends CardView {
                 }
             }
         });
+
+        imagesListView.setLayoutManager(
+            new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
+        mAdapter = new ItemsViewAdapter(context, new ImageThumbnailAdapter());
+        imagesListView.setAdapter(mAdapter);
+    }
+
+    public void addInputImageThumbnail(Uri imageUri, ItemHandlerProvider<MainActivity> itemHandlerProvider) {
+        int insertPosition = mAdapter.getItemCount();
+        if (insertPosition == 0) {
+            // Need to set the recycler view visible now
+            imagesListView.setVisibility(VISIBLE);
+        }
+        mAdapter.addItem(insertPosition,
+            new ImageThumbnailItem(new InputImageAsset(imageUri), itemHandlerProvider));
+
+        scrollToBottom();
+    }
+
+    public void removeInputImageThumbnail(int position) {
+        mAdapter.removeItemAt(position);
+
+        if (mAdapter.getItemCount() == 0) {
+            imagesListView.setVisibility(GONE);
+        }
+    }
+
+    public void scrollToBottom() {
+        mMaxHeightScrollView.fullScroll(View.FOCUS_DOWN);
     }
 
     public void setListener (TextImageInputListener listener) {

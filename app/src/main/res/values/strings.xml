@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">HybridTextImageInput</string>
+    <string name="app_name">Hybrid Text Image</string>
+    <string name="note_text_hint">Write a note&#8230;</string>
+    <string name="select_images_chooser_title">Select images to post</string>
 </resources>

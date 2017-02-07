@@ -8,4 +8,8 @@ import android.net.Uri;
 
 public class InputImageAsset {
     Uri imageUri;
+
+    public InputImageAsset(Uri imageUri) {
+        this.imageUri = imageUri;
+    }
 }

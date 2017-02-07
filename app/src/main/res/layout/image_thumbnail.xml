@@ -5,5 +5,7 @@
     <ImageView
         android:id="@+id/iv_thumbnail"
         android:layout_width="@dimen/thumbnail_size"
-        android:layout_height="@dimen/thumbnail_size" />
+        android:layout_height="@dimen/thumbnail_size"
+        android:layout_marginRight="6dp"
+        android:scaleType="centerCrop"/>
 </FrameLayout>

@@ -6,12 +6,20 @@
     android:layout_height="wrap_content"
     tool:layout_height = "200dp"
     android:paddingLeft="3dp"
-    android:paddingRight="3dp">
+    android:paddingRight="3dp"
+    android:paddingBottom="3dp">
     <EditText
         android:id="@+id/et_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:paddingTop="12dp"
+        android:paddingBottom="9dp"
+        android:hint="@string/note_text_hint"
+        android:textSize="14sp"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_images"
         android:layout_width="wrap_content"
@@ -23,5 +31,6 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/colorPrimaryDark"
-        android:layout_marginTop="3dp"/>
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"/>
 </LinearLayout>

@@ -9,26 +9,29 @@ import android.util.AttributeSet;
  */
 
 public class MaxHeightScrollView extends NestedScrollView {
-    private static final int MAX_HEIGHT = 200;
+    private int mMaxHeight;
 
     public MaxHeightScrollView(Context context) {
         super(context);
+        mMaxHeight = context.getResources().getDimensionPixelSize(R.dimen.text_image_input_max_height);
     }
 
     public MaxHeightScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mMaxHeight = context.getResources().getDimensionPixelSize(R.dimen.text_image_input_max_height);
     }
 
     public MaxHeightScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mMaxHeight = context.getResources().getDimensionPixelSize(R.dimen.text_image_input_max_height);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         try {
             int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-            if (heightSize > MAX_HEIGHT) {
-                heightSize = MAX_HEIGHT;
+            if (heightSize > mMaxHeight) {
+                heightSize = mMaxHeight;
             }
             heightMeasureSpec = MeasureSpec.makeMeasureSpec(heightSize, MeasureSpec.AT_MOST);
             getLayoutParams().height = heightSize;
